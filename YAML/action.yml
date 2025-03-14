@@ -1,0 +1,35 @@
+name: “Authentication Report Action"
+description: "The action YAML file that logs in and generates the Entra Authentication Methods Report."
+inputs:
+  tenant_id:
+    description: "Entra ID Tenant ID"
+    required: true
+  client_id:
+    description: "App Registration Client ID"
+    required: true
+  
+runs:
+  using: "composite"
+  steps:
+    - name: Sign in to Entra ID
+      uses: azure/login@v2
+      with:
+        client-id: ${{ inputs.client_id }}
+        tenant-id: ${{ inputs.tenant_id }}
+        allow-no-subscriptions: true
+        enable-AzPSSession: true
+        
+    - name: Checkout Script
+      uses: actions/checkout@v4
+      
+    - name: Run Entra Auth Report
+      shell: pwsh
+      run: |
+        pwsh .\action\Invoke-EntraAuthReport.ps1 -TenantId '${{ inputs.tenant_id}}' -ClientId '${{ inputs.client_id }}' `
+
+    - name: Authentication Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: Entra Authentication Methods Report
+        path: ./Entra_Authentication_Methods_Report.html
+        include-hidden-files: false
