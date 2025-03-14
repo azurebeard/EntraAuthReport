@@ -4,13 +4,10 @@ This repository automates the execution of the [Invoke-EntraAuthReport](https://
 
 ## Features
 
-- Uses [Invoke-EntraAuthReport](https://www.powershellgallery.com/packages/Invoke-EntraAuthReport) by [Daniel Brady](https://ourcloudnetwork.com/about/) [LinkedIn](https://www.linkedin.com/in/danielbradley2/). Be sure to give him a follow and say thanks!
+- Uses [Invoke-EntraAuthReport](https://www.powershellgallery.com/packages/Invoke-EntraAuthReport) by [Daniel Bradley](https://ourcloudnetwork.com/about/) [LinkedIn](https://www.linkedin.com/in/danielbradley2/). Be sure to give him a follow and say thanks!
 - Runs on a schedule using GitHub Actions
 - Authenticates via an Entra ID application (app registration required)
 - Collects Entra ID authentication methods insights
 - Uploads the report as an artefact on the run action
 
-## Prerequisites
-
-TBC
-
+For further information see: [Blog Post](https://azurebeard.co.uk/blog/github_actions_entra_auth_report/)
